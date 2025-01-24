@@ -4,17 +4,38 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TarefaService } from 'src/app/service/tarefa.service';
 import { Tarefa } from '../interface/tarefa';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-lista-tarefas',
   templateUrl: './lista-tarefas.component.html',
-  styleUrls: ['./lista-tarefas.component.css']
+  styleUrls: ['./lista-tarefas.component.css'],
+  animations: [trigger('luzDestacada', [
+    state('default', style({
+      border: '2px solid #b2b6ff',
+      // backgroundColor: 'yellow',
+    })),
+    state('iluminado', style({
+      border: '4px solid #b2b6ff',
+      filter: 'brightness(92%)',
+      // backgroundColor: 'lightgreen',
+    })),
+    transition('default => iluminado', [ //quando passar de um estado para outro
+      animate('200ms ease-out', style({
+        transform: 'scale(1.02)' //quando passar de um estado para outro, ele vai dar um zoom
+       })),
+
+       animate(200) //duração da animação
+      ]),
+  ])],
 })
 export class ListaTarefasComponent implements OnInit {
   listaTarefas: Tarefa[] = [];
   formAberto: boolean = false;
   categoria: string = '';
   validado: boolean = false;
+  indexTarefa = -1; //se fosse "0" já ia deixar com luz o primeiro valor, que começa em 0
 
   formulario: FormGroup = this.fomBuilder.group({
     id: [0],
