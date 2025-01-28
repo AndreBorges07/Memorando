@@ -35,26 +35,11 @@ export const mostrandoStatusTrigger = trigger('mostrandoStatus', [
 
 ]);
 
-//   transition(':enter', [
-//     style({
-//       opacity: 0
-//     }),
-//     animate(300, style({
-//       opacity: 1
-//     }))
-//   ]),
-//   transition(':leave', [
-//     animate(300, style({
-//       opacity: 0
-//     }))
-//   ])
-// ])
-
-
-// export const checkButtonTrigger = trigger('checkButton', [
-//   transition('* => checked', [
-//     animate('400ms ease-in', style({
-//       transform: 'scale(0.4)'
-//     }))
-//   ])
-// ])
+export const checkButtonTrigger = trigger('checkButton', [
+  transition('* <=> checked', [ // unchecked <=> checked
+    animate('300ms ease-in', style({
+      transform: 'scale(0.4)'
+    })
+    )
+  ])
+]);
