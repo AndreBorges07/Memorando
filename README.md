@@ -1,6 +1,6 @@
 # Memorando
 
-![Status-Concluído-green](https://user-images.githubusercontent.com/93163125/210287743-09caa864-8da5-449e-b864-deb864513652.svg)
+![Status-Concluído-green](https://user-images.githubusercontent.com/93163125/210287743-09caa864-8da5-449e-b864-deb864513652.svg) Ajustar o back no Vercel
 
 ![image](https://github.com/user-attachments/assets/bc2cd68b-ee57-485e-be38-c5032dddd7eb)
 
