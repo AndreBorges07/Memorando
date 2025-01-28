@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title '2806-memorando'`, () => {
+  it(`should have as title 'memorando'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('2806-memorando');
+    expect(app.title).toEqual('memorando');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('2806-memorando app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('memorando app is running!');
   });
 });
