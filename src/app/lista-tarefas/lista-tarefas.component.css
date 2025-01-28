@@ -35,11 +35,7 @@
   justify-content:center;
   align-items:center;
 }
-h2 {
-  font-size:32px;
-  margin-right:88px;
-  margin-left:40px;
-}
+
 button {
   border-style:solid;
   border-color:rgb(175, 193, 207);
@@ -314,4 +310,4 @@ input::placeholder {
   .botoes-form {
     flex-direction:column;
   }}
-/* Remover classes não usadas */
+
