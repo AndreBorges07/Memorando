@@ -24,7 +24,7 @@ import { checkButtonTrigger, filterTrigger, formButtonTrigger, luzDestacadaTrigg
 })
 export class ListaTarefasComponent implements OnInit {
   listaTarefas: Tarefa[] = [];
-  formAberto: boolean = true; //provisório. era false antes
+  formAberto: boolean = false;
   categoria: string = '';
   validado: boolean = false;
   indexTarefa = -1; //se fosse "0" já ia deixar com luz o primeiro valor, que começa em 0
@@ -36,8 +36,8 @@ export class ListaTarefasComponent implements OnInit {
     id: [0],
     descricao: ['', Validators.required],
     statusFinalizado: [false, Validators.required],
-    categoria: ['Trabalho', Validators.required],
-    prioridade: ['Alta', Validators.required],
+    categoria: ['', Validators.required],
+    prioridade: ['', Validators.required],
   });
 
   constructor(
