@@ -103,7 +103,7 @@
           <button
             [ngClass]="(tarefa.statusFinalizado == true) ? 'icone-checked' : 'icone-unchecked'"
             (click)="finalizarTarefa(tarefa)"
-            [@checkButton]="tarefa.id === idTarefa ? 'checked' : 'unchecked'">
+            [@checkButton]="tarefa.id === idTarefa && estadoBotao">
           </button>
         </p>
       </div>
