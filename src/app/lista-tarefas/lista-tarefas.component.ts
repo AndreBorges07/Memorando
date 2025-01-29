@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TarefaService } from 'src/app/service/tarefa.service';
 import { Tarefa } from '../interface/tarefa';
 
-import { checkButtonTrigger, filterTrigger, formButtonTrigger, luzDestacadaTrigger, mostrandoStatusTrigger, semTarefasTrigger } from '../animations';
+import { checkButtonTrigger, filterTrigger, formButtonTrigger, luzDestacadaTrigger, mostrandoStatusTrigger, semTarefasTrigger, shakeTrigger } from '../animations';
 
 @Component({
   selector: 'app-lista-tarefas',
@@ -18,12 +18,13 @@ import { checkButtonTrigger, filterTrigger, formButtonTrigger, luzDestacadaTrigg
     checkButtonTrigger,
     filterTrigger,
     formButtonTrigger,
-    semTarefasTrigger
+    semTarefasTrigger,
+    shakeTrigger
   ],
 })
 export class ListaTarefasComponent implements OnInit {
   listaTarefas: Tarefa[] = [];
-  formAberto: boolean = false;
+  formAberto: boolean = true; //provisório. era false antes
   categoria: string = '';
   validado: boolean = false;
   indexTarefa = -1; //se fosse "0" já ia deixar com luz o primeiro valor, que começa em 0
@@ -35,8 +36,8 @@ export class ListaTarefasComponent implements OnInit {
     id: [0],
     descricao: ['', Validators.required],
     statusFinalizado: [false, Validators.required],
-    categoria: ['', Validators.required],
-    prioridade: ['', Validators.required],
+    categoria: ['Trabalho', Validators.required],
+    prioridade: ['Alta', Validators.required],
   });
 
   constructor(

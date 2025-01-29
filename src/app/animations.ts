@@ -117,3 +117,24 @@ export const semTarefasTrigger = trigger('semTarefasTrigger', [
     ]))
   ])
 ]);
+
+export const shakeTrigger = trigger('shakeAnimation', [
+  transition('* => *', [
+    query('input.ng-invalid:focus, select.ng-invalid:focus', [ // Pega os inputs inválidos que estão focados
+      animate(300, keyframes([
+        style({ border: '2px solid red'}),
+        style({ transform: 'translateX(-10px)'}),
+        style({ transform: 'translateX(10px)'}),
+        style({ transform: 'translateX(-10px)'}),
+        style({ transform: 'translateX(10px)'}),
+        style({ transform: 'translateX(-10px)'}),
+        style({ transform: 'translateX(10px)'}),
+        style({ transform: 'translateX(-10px)'}),
+        style({ transform: 'translateX(10px)'}),
+        style({ transform: 'translateX(-10px)'}),
+        style({ transform: 'translateX(0)' })
+      ]))
+    ], { optional: true }), // O { optional: true } é para não dar erro se não encontrar o elemento
+  ])
+]
+)
