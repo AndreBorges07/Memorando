@@ -1,5 +1,5 @@
 import { BackgroundColor, backgroundColorNames } from './../../node_modules/json-server/node_modules/chalk/source/vendor/ansi-styles/index.d';
-import { trigger, state, style, transition, animate, keyframes, group, query } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, group, query, stagger } from '@angular/animations';
 
 export const luzDestacadaTrigger = trigger('luzDestacada', [
   state('default', style({
@@ -138,3 +138,28 @@ export const shakeTrigger = trigger('shakeAnimation', [
   ])
 ]
 )
+
+export const listStateTrigger = trigger('listState', [
+  transition('* => *', [
+    query(':enter', [
+      style({
+        opacity: 0,
+        transform: 'translateX(-100%)'
+      }),
+      stagger(200, [
+        animate('500ms ease-out', keyframes([
+          style({
+            opacity: 1,
+            transform: 'translateX(15%)',
+            offset: 0.4
+          }),
+          style({
+            opacity: 1,
+            transform: 'translateX(0)',
+            offset: 1
+          }),
+        ]))
+      ]),
+    ], { optional: true }),
+  ])
+]);
