@@ -97,3 +97,21 @@ export const formButtonTrigger = trigger('formButton', [
 
 ]
 )
+
+export const semTarefasTrigger = trigger('semTarefasTrigger', [
+  transition(':enter', [
+    style({ opacity: 0, transform: 'translateY(-20px)' }), // Começa invisível e um pouco acima
+    animate('300ms ease-out', keyframes([
+      style({ opacity: 0, transform: 'translateY(-20px)', offset: 0 }), // Início
+      style({ opacity: 1, transform: 'translateY(10px)', offset: 0.6 }), // Pula para baixo
+      style({ opacity: 1, transform: 'translateY(0)', offset: 1 }) // Volta à posição normal
+    ]))
+  ]),
+  transition(':leave', [
+    animate('300ms ease-in', keyframes([
+      style({ opacity: 1, transform: 'scale(1)', offset: 0 }), // Início
+      style({ opacity: 0.5, transform: 'scale(0.8)', offset: 0.5 }), // Encolhe um pouco
+      style({ opacity: 0, transform: 'scale(0.5)', offset: 1 }) // Desaparece completamente
+    ]))
+  ])
+]);
