@@ -1,5 +1,5 @@
 import { BackgroundColor, backgroundColorNames } from './../../node_modules/json-server/node_modules/chalk/source/vendor/ansi-styles/index.d';
-import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 export const luzDestacadaTrigger = trigger('luzDestacada', [
   state('default', style({
@@ -68,12 +68,27 @@ export const filterTrigger = trigger('filterAnimation', [
 
 export const formButtonTrigger = trigger('formButton', [
   transition('invalid => valid', [
+    group([
+      animate(200, style({
+        backgroundColor: '#63b77c'
+      })),
+      animate(200, style({
+        transform: 'scale(1.1)'
+      })),
+    ]),
     animate(200, style({
-      backgroundColor: '#63b77c'
-    })),
-    animate(200, style({
-      transform: 'scale(1.1)'
-    })),
+      transform: 'scale(1)'
+    }))
+  ]),
+  transition('valid => invalid', [
+    group([
+      animate(200, style({
+        backgroundColor: '#6c757d'
+      })),
+      animate(200, style({
+        transform: 'scale(1.1)'
+      })),
+    ]),
     animate(200, style({
       transform: 'scale(1)'
     }))
