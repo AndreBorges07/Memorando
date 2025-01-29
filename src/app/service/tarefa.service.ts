@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Tarefa } from '../interface/tarefa';
 
@@ -9,31 +9,56 @@ import { Tarefa } from '../interface/tarefa';
 })
 export class TarefaService {
   private readonly API = 'http://localhost:3000/tarefas';
+  private tarefaSubject = new BehaviorSubject<Tarefa[]>([]);
   constructor(private http: HttpClient) {}
+  tarefas$ = this.tarefaSubject.asObservable(); //o asObservable() é para não permitir que o valor seja alterado fora do serviço
 
-  listar(categoria: string): Observable<Tarefa[]> {
+  listar(): void {
     let params = new HttpParams().appendAll({
       _sort: 'id',
       _order: 'desc',
     });
-    if (categoria) {
-      params = params.append('categoria', categoria);
-    }
-    return this.http.get<Tarefa[]>(this.API, { params });
+    this.http.get<Tarefa[]>(this.API, { params }).subscribe((tarefas) => {
+      let tarefasTemporarias = this.tarefaSubject.getValue(); // pega o valor atual do array
+      tarefasTemporarias = tarefasTemporarias.concat(tarefas);
+      this.tarefaSubject.next(tarefasTemporarias);
+    });
   }
 
-  criar(tarefa: Tarefa): Observable<Tarefa> {
-    return this.http.post<Tarefa>(this.API, tarefa);
+  criar(tarefa: Tarefa): void {
+    this.http.post<Tarefa>(this.API, tarefa).subscribe((novaTarefa) => {
+      const tarefas = this.tarefaSubject.getValue(); //pega o valor atual do array
+      tarefas.unshift(novaTarefa); //"unshift"adiciona no início do array, já o push adiciona no final.
+      this.tarefaSubject.next(tarefas);
+    });
   }
 
-  editar(tarefa: Tarefa): Observable<Tarefa> {
+  editar(tarefa: Tarefa, atualizarSubject: boolean): void {
     const url = `${this.API}/${tarefa.id}`;
-    return this.http.put<Tarefa>(url, tarefa);
+    this.http.put<Tarefa>(url, tarefa).subscribe(tarefaEditada => {
+      if (atualizarSubject) {
+        const tarefas = this.tarefaSubject.getValue();
+        const index = tarefas.findIndex(tarefa => tarefa.id === tarefaEditada.id);
+        if (index !== -1) {
+          tarefas[index] = tarefaEditada;
+          this.tarefaSubject.next(tarefas);
+        }
+      }
+
+    });
   }
 
-  excluir(id: number): Observable<Tarefa> {
+  excluir(id: number): void {
     const url = `${this.API}/${id}`;
-    return this.http.delete<Tarefa>(url);
+    this.http.delete<Tarefa>(url).subscribe(() => {
+      const tarefas = this.tarefaSubject.getValue();
+      const index = tarefas.findIndex(tarefa => tarefa.id === id);
+      if (index !== -1) {
+        tarefas.splice(index, 1);
+        this.tarefaSubject.next(tarefas);
+      }
+    });
+
   }
 
   buscarPorId(id: number): Observable<Tarefa> {
@@ -41,8 +66,8 @@ export class TarefaService {
     return this.http.get<Tarefa>(url);
   }
 
-  atualizarStatusTarefa(tarefa: Tarefa): Observable<Tarefa> {
+  atualizarStatusTarefa(tarefa: Tarefa): void {
     tarefa.statusFinalizado = !tarefa.statusFinalizado;
-    return this.editar(tarefa);
+    this.editar(tarefa, false);
   }
 }
