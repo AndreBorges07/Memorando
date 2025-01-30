@@ -1,4 +1,3 @@
-import { BackgroundColor, backgroundColorNames } from './../../node_modules/json-server/node_modules/chalk/source/vendor/ansi-styles/index.d';
 import { trigger, state, style, transition, animate, keyframes, group, query, stagger } from '@angular/animations';
 
 export const luzDestacadaTrigger = trigger('luzDestacada', [
