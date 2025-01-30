@@ -9,7 +9,8 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class TarefaService {
-  private readonly API = environment.apiUrl;
+  // private readonly API = environment.apiUrl;
+  private readonly API = 'https://json-tarefas-memorando.vercel.app/tarefas'; //testar
   private tarefaSubject = new BehaviorSubject<Tarefa[]>([]);
   constructor(private http: HttpClient) {}
   tarefas$ = this.tarefaSubject.asObservable(); //o asObservable() é para não permitir que o valor seja alterado fora do serviço
