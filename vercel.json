@@ -6,14 +6,17 @@
       "use": "@vercel/static"
     },
     {
-      "src": "api/json-server.js",
-      "use": "@vercel/node"
+      "src": "backend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "backend"
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/json-server.js"
+      "dest": "/backend/node_modules/.bin/json-server --watch backend/db.json --port 3000"
     },
     {
       "src": "/(.*)",
