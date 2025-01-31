@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class TarefaService {
   // private readonly API = environment.apiUrl;
+  // private readonly API = 'http://localhost:3000/tarefas';
   private readonly API = 'https://json-tarefas-memorando.vercel.app/tarefas'; //testar
   private tarefaSubject = new BehaviorSubject<Tarefa[]>([]);
   constructor(private http: HttpClient) {}
