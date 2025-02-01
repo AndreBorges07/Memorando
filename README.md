@@ -23,8 +23,16 @@ Para testar é preciso subir o servidor do back.
         <li>Transições entre estados</li>
         <li>Animando o formulário</li>
         <li>Desafio check</li>
+        <li>Busca animada com keyframes, offset e cubic-bezier</li>
+        <li>Botão animado com query e group</li>
+        <li>Chamando atenção com query e keyframes</li>
+        <li>Refatorando com RxJS</li>
+        <li>Carregando a lista de forma animada</li>
     </ul>
 
 # Certificados: 
 <b>Angular: torne sua aplicação interativa e personalizada com animações</b><br>
 Acesse aqui: [https://cursos.alura.com.br/certificate/andreBorges07/rxjs-angular-programando-forma-reativa](https://cursos.alura.com.br/user/andreBorges07/course/angular-aplicacao-interativa-personalizada-animacoes/certificate)
+
+<b>Angular: aprimore suas técnicas de animação e crie interfaces ainda mais atraentes</b><br>
+Acesse aqui: https://cursos.alura.com.br/certificate/andreBorges07/angular-tecnicas-animacao-interfaces-atraentes
