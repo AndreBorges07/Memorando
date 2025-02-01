@@ -1,12 +1,11 @@
 # Memorando
 
 ![Status - Em Desenvolvimento](https://github.com/user-attachments/assets/44bde4d8-0545-4681-b828-6ce1c242ffe0)
-
-
-![image](https://github.com/user-attachments/assets/bc2cd68b-ee57-485e-be38-c5032dddd7eb)
+![cortado a parte de cima](https://github.com/user-attachments/assets/094f06e2-0449-40ca-9ea5-6df5cb7939f9)
 
 # Descrição
-Cria e edita tarefas, podendo categorizar e por nível de prioridade. Neste projeto foi exercitado as animações e transições do conteúdo de acordo com a interação do usuário. 
+Cria e edita tarefas, podendo categorizar e por nível de prioridade. Neste projeto foi exercitado as animações e transições do conteúdo de acordo com a interação do usuário.
+Entrada dos cards, marcando como "feito", formulário certo dentre outros.  
 Para testar é preciso subir o servidor do back. 
 
 # Tecnologias utilizadas
